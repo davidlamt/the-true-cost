@@ -27,5 +27,10 @@
         "trailingComma": "es5"
       }
     ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
