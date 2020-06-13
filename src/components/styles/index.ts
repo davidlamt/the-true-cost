@@ -9,6 +9,7 @@ const primayButtonBase = css`
   font-size: 1em;
   height: 50px;
   min-width: 100px;
+  outline: none;
   padding: 15px;
   padding: 5px;
   text-transform: uppercase;
