@@ -1,9 +1,21 @@
-import React from 'react';
+/** @jsx jsx */
 
-import Header from './Header';
+import React from 'react';
+import { css, jsx } from '@emotion/core';
+
+import { CalculationPane, Header } from './components';
 
 const App: React.FunctionComponent = () => {
-  return <Header />;
+  return (
+    <div
+      css={css`
+        text-align: center;
+      `}
+    >
+      <Header />
+      <CalculationPane />
+    </div>
+  );
 };
 
 export default App;
