@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 
-const primayButtonBase = css`
+const primaryButtonBase = css`
   background-color: #3080df;
   border-radius: 5px;
   border: none;
@@ -19,4 +19,4 @@ const primayButtonBase = css`
   }
 `;
 
-export { primayButtonBase };
+export { primaryButtonBase };

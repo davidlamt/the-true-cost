@@ -5,7 +5,7 @@ import { css, jsx } from '@emotion/core';
 
 import commonExpenses, { ICommonExpense } from '../staticData/commonExpenses';
 
-import { primayButtonBase } from './styles';
+import { primaryButtonBase } from './styles';
 
 const CalculationPane: React.FunctionComponent = () => {
   const [selectedExpense, setSelectedExpense] = useState<ICommonExpense | null>(null);
@@ -21,7 +21,7 @@ const CalculationPane: React.FunctionComponent = () => {
       </p>
       {commonExpenses.map((commonExpense) => (
         <button
-          css={primayButtonBase}
+          css={primaryButtonBase}
           key={commonExpense.name}
           onClick={() => setSelectedExpense(commonExpense)}
         >
