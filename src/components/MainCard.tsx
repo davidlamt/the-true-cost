@@ -9,20 +9,39 @@ import commonExpenses, { ICommonExpense } from '../static/commonExpenses';
 
 import { primaryButtonBase } from './styles';
 
-const CalculationPane: React.FunctionComponent = () => {
+const MainCard: React.FunctionComponent = () => {
   const [selectedExpense, setSelectedExpense] = useState<ICommonExpense | null>(null);
 
   return (
-    <div>
+    <div
+      css={css`
+        border-radius: 5px;
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
+        margin: 0 20%;
+      `}
+    >
+      <h3
+        css={css`
+          align-items: center;
+          background-color: #364958;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          color: white;
+          display: flex;
+          height: 50px;
+          justify-content: center;
+          margin: 0;
+          padding: 0;
+        `}
+      >
+        Common Monthly Expenses
+      </h3>
       {!selectedExpense && (
-        <div>
-          <p
-            css={css`
-              font-size: 1.25em;
-            `}
-          >
-            Common Monthly Expenses:
-          </p>
+        <div
+          css={css`
+            padding: 50px;
+          `}
+        >
           {commonExpenses.map((commonExpense) => (
             <button
               css={primaryButtonBase}
@@ -40,4 +59,4 @@ const CalculationPane: React.FunctionComponent = () => {
   );
 };
 
-export default CalculationPane;
+export default MainCard;

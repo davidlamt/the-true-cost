@@ -8,7 +8,13 @@ const Header: React.FunctionComponent = () => {
     <header>
       <h1
         css={css`
+          -webkit-text-fill-color: transparent;
+          background: repeating-linear-gradient(270deg, #55828b, #364958);
           font-size: 3em;
+          margin: auto;
+          text-align: center;
+          width: fit-content;
+          -webkit-background-clip: text;
         `}
       >
         The True Cost

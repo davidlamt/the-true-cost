@@ -1,4 +1,4 @@
-import CalculationPane from './CalculationPane';
+import MainCard from './MainCard';
 import Header from './Header';
 
-export { CalculationPane, Header };
+export { MainCard, Header };

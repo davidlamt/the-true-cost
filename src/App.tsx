@@ -3,7 +3,7 @@
 import React from 'react';
 import { css, jsx } from '@emotion/core';
 
-import { CalculationPane, Header } from './components';
+import { Header, MainCard } from './components';
 
 const App: React.FunctionComponent = () => {
   return (
@@ -13,7 +13,7 @@ const App: React.FunctionComponent = () => {
       `}
     >
       <Header />
-      <CalculationPane />
+      <MainCard />
     </div>
   );
 };
