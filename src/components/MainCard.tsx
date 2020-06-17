@@ -6,7 +6,6 @@ import { css, jsx } from '@emotion/core';
 import { ExpenseDetails } from './';
 
 import commonExpenses, { ICommonExpense } from '../static/commonExpenses';
-
 import { primaryButtonBase } from './styles';
 
 const MainCard: React.FunctionComponent = () => {
