@@ -21,12 +21,23 @@ const ExpenseDetails: React.FunctionComponent<IExpenseDetailsProps> = ({
   const totalOpportunityCost = calculateCompoundInterest(yearlyCost, timeframe).toFixed(2);
 
   return (
-    <div>
-      <div>
+    <div
+      css={css`
+        line-height: 1.5;
+        text-align: left;
+      `}
+    >
+      <div
+        css={css`
+          font-size: 1.5em;
+          margin-bottom: 20px;
+          text-align: center;
+        `}
+      >
         In {timeframe} years, you could have had{' '}
         <span
           css={css`
-            font-size: 2em;
+            font-size: 1.5em;
           `}
         >
           ${totalOpportunityCost}

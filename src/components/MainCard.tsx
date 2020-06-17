@@ -12,12 +12,17 @@ import { primaryButtonBase } from './styles';
 const MainCard: React.FunctionComponent = () => {
   const [selectedExpense, setSelectedExpense] = useState<ICommonExpense | null>(null);
 
+  let title = 'Choose a Monthly Expense';
+  if (selectedExpense) {
+    title = `${selectedExpense.name}: $${selectedExpense.monthlyCost} / month`;
+  }
+
   return (
     <div
       css={css`
         border-radius: 5px;
         box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
-        margin: 0 20%;
+        margin: 0 10%;
       `}
     >
       <h3
@@ -34,27 +39,29 @@ const MainCard: React.FunctionComponent = () => {
           padding: 0;
         `}
       >
-        Common Monthly Expenses
+        {title}
       </h3>
-      {!selectedExpense && (
-        <div
-          css={css`
-            padding: 50px;
-          `}
-        >
-          {commonExpenses.map((commonExpense) => (
-            <button
-              css={primaryButtonBase}
-              key={commonExpense.name}
-              onClick={() => setSelectedExpense(commonExpense)}
-            >
-              {commonExpense.name}
-            </button>
-          ))}
-          <input placeholder="Enter your own" />
-        </div>
-      )}
-      {selectedExpense && <ExpenseDetails expense={selectedExpense} />}
+      <div
+        css={css`
+          padding: 50px;
+        `}
+      >
+        {!selectedExpense && (
+          <div>
+            {commonExpenses.map((commonExpense) => (
+              <button
+                css={primaryButtonBase}
+                key={commonExpense.name}
+                onClick={() => setSelectedExpense(commonExpense)}
+              >
+                {commonExpense.name}
+              </button>
+            ))}
+            <input placeholder="Enter your own" />
+          </div>
+        )}
+        {selectedExpense && <ExpenseDetails expense={selectedExpense} />}
+      </div>
     </div>
   );
 };
