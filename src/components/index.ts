@@ -1,4 +1,5 @@
-import MainCard from './MainCard';
+import ExpenseDetails from './ExpenseDetails';
 import Header from './Header';
+import MainCard from './MainCard';
 
-export { MainCard, Header };
+export { ExpenseDetails, Header, MainCard };

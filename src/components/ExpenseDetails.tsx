@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { css, jsx } from '@emotion/core';
 import ReactMarkdown from 'react-markdown';
 
@@ -14,14 +14,16 @@ interface IExpenseDetailsProps {
 const ExpenseDetails: React.FunctionComponent<IExpenseDetailsProps> = ({
   expense,
 }: IExpenseDetailsProps) => {
-  const yearlyCost = expense.cost * 12;
-  const totalCost = (yearlyCost * 10).toFixed(2);
-  const totalOpportunityCost = calculateCompoundInterest(yearlyCost, 10).toFixed(2);
+  const [timeframe] = useState(10);
+
+  const yearlyCost = expense.monthlyCost * 12;
+  const totalCost = (yearlyCost * timeframe).toFixed(2);
+  const totalOpportunityCost = calculateCompoundInterest(yearlyCost, timeframe).toFixed(2);
 
   return (
     <div>
       <div>
-        In 10 years, you could have had{' '}
+        In {timeframe} years, you could have had{' '}
         <span
           css={css`
             font-size: 2em;

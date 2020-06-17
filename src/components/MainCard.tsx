@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { css, jsx } from '@emotion/core';
 
-import ExpenseDetails from './ExpenseDetails';
+import { ExpenseDetails } from './';
 
 import commonExpenses, { ICommonExpense } from '../static/commonExpenses';
 
