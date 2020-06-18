@@ -46,14 +46,32 @@ const MainCard: React.FunctionComponent = () => {
         `}
       >
         {!selectedExpense && (
-          <div>
+          <div
+            css={css`
+              align-items: center;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-evenly;
+            `}
+          >
             {commonExpenses.map((commonExpense) => (
               <button
-                css={primaryButtonBase}
+                css={css`
+                  background-color: transparent;
+                  border: none;
+                  cursor: pointer;
+                  outline: none;
+                  transition: transform 0.3s ease;
+                  width: 50px;
+
+                  &:hover {
+                    transform: scale(1.3);
+                  }
+                `}
                 key={commonExpense.name}
                 onClick={() => setSelectedExpense(commonExpense)}
               >
-                {commonExpense.name}
+                <commonExpense.imageComponent />
               </button>
             ))}
             <input placeholder="Enter your own" />
