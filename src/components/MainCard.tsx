@@ -1,12 +1,12 @@
 /** @jsx jsx */
 
 import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { css, jsx } from '@emotion/core';
 
 import { ExpenseDetails } from './';
 
 import commonExpenses, { ICommonExpense } from '../static/commonExpenses';
-import { primaryButtonBase } from './styles';
 
 const MainCard: React.FunctionComponent = () => {
   const [selectedExpense, setSelectedExpense] = useState<ICommonExpense | null>(null);
@@ -43,6 +43,8 @@ const MainCard: React.FunctionComponent = () => {
       <div
         css={css`
           padding: 50px;
+          min-height: 50px;
+          height: auto;
         `}
       >
         {!selectedExpense && (
@@ -77,7 +79,35 @@ const MainCard: React.FunctionComponent = () => {
             <input placeholder="Enter your own" />
           </div>
         )}
-        {selectedExpense && <ExpenseDetails expense={selectedExpense} />}
+        <CSSTransition in={!!selectedExpense} timeout={2000} classNames="fade">
+          <div
+            css={css`
+              &.fade-enter {
+                max-height: 0;
+                opacity: 0;
+              }
+
+              &.fade-enter-active {
+                max-height: 1000px;
+                opacity: 1;
+                transition: opacity 2s, max-height 1s;
+              }
+
+              &.fade-exit {
+                max-height: 1000px;
+                opacity: 1;
+              }
+
+              &.fade-exit-active {
+                max-height: 0;
+                opacity: 0;
+                transition: opacity 2s, max-height 1s;
+              }
+            `}
+          >
+            {selectedExpense && <ExpenseDetails css={css``} expense={selectedExpense} />}
+          </div>
+        </CSSTransition>
       </div>
     </div>
   );
