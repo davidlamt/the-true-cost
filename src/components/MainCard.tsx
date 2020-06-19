@@ -51,7 +51,7 @@ const MainCard: React.FunctionComponent = () => {
                 display: flex;
                 left: 10px;
                 position: absolute;
-                transition: transform 0.3s;
+                transition: transform 0.3s ease;
 
                 &:hover {
                   transform: rotate(-180deg);
@@ -91,7 +91,7 @@ const MainCard: React.FunctionComponent = () => {
             &.fade-enter-active {
               max-height: 1000px;
               opacity: 1;
-              transition: opacity 2s, max-height 1s;
+              transition: opacity 2s ease, max-height 1s ease;
             }
 
             &.fade-exit {
@@ -102,7 +102,7 @@ const MainCard: React.FunctionComponent = () => {
             &.fade-exit-active {
               height: 0;
               opacity: 1;
-              transition: opacity 1s, height 1s;
+              transition: opacity 1s ease, height 1s ease;
             }
           `}
         >

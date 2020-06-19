@@ -9,7 +9,7 @@ const Header: React.FunctionComponent = () => {
       <h1
         css={css`
           -webkit-text-fill-color: transparent;
-          background: repeating-linear-gradient(270deg, #55828b, #364958);
+          background: linear-gradient(0.25turn, #364958, #55828b);
           font-size: 3em;
           margin: auto;
           text-align: center;

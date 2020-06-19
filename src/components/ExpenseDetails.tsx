@@ -55,7 +55,40 @@ const ExpenseDetails: React.FunctionComponent<IExpenseDetailsProps> = ({
         While you only spent {totalCost}, the opportunity cost is your real enemy. The number above
         shows you what could have been if you took the monthly expense and invested it instead.
       </div>
-      <ReactMarkdown source={expense.description} />
+      <ReactMarkdown
+        css={css`
+          a {
+            position: relative;
+            text-decoration: none;
+            display: inline-block;
+            color: black;
+            padding: 0 1px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+          }
+
+          a::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 10%;
+            left: 0;
+            bottom: 0;
+            background: linear-gradient(0.25turn, #364958, #55828b);
+            transition: height 0.3s ease;
+          }
+
+          a:hover {
+            color: white;
+
+            &::after {
+              height: 100%;
+            }
+          }
+        `}
+        source={expense.description}
+      />
       <div>
         <sup>*</sup>This calculation was made assuming an 8% average annual return
       </div>
