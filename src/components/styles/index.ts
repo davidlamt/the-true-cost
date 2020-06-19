@@ -25,4 +25,11 @@ const primaryButtonBase = css`
   }
 `;
 
-export { primaryButtonBase };
+const svgButtonBase = css`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+`;
+
+export { primaryButtonBase, svgButtonBase };

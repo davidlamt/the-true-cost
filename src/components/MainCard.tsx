@@ -4,9 +4,13 @@ import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { css, jsx } from '@emotion/core';
 
+import { ReactComponent as ResetSvg } from '../images/reset.svg';
 import { ExpenseDetails } from './';
 
 import commonExpenses, { ICommonExpense } from '../static/commonExpenses';
+import { svgButtonBase } from './styles';
+
+let expenseDivRef: HTMLDivElement | null;
 
 const MainCard: React.FunctionComponent = () => {
   const [selectedExpense, setSelectedExpense] = useState<ICommonExpense | null>(null);
@@ -24,7 +28,7 @@ const MainCard: React.FunctionComponent = () => {
         margin: 0 10%;
       `}
     >
-      <h3
+      <div
         css={css`
           align-items: center;
           background-color: #364958;
@@ -32,83 +36,112 @@ const MainCard: React.FunctionComponent = () => {
           border-top-right-radius: 5px;
           color: white;
           display: flex;
-          height: 50px;
           justify-content: center;
           margin: 0;
-          padding: 0;
-        `}
-      >
-        {title}
-      </h3>
-      <div
-        css={css`
-          padding: 50px;
           min-height: 50px;
-          height: auto;
+          padding: 0;
+          position: relative;
         `}
       >
-        {!selectedExpense && (
-          <div
-            css={css`
-              align-items: center;
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: space-evenly;
-            `}
-          >
-            {commonExpenses.map((commonExpense) => (
-              <button
-                css={css`
-                  background-color: transparent;
-                  border: none;
-                  cursor: pointer;
-                  outline: none;
-                  transition: transform 0.3s ease;
-                  width: 50px;
+        {selectedExpense && (
+          <button
+            css={[
+              svgButtonBase,
+              css`
+                display: flex;
+                left: 10px;
+                position: absolute;
+                transition: transform 0.3s;
 
-                  &:hover {
-                    transform: scale(1.3);
-                  }
-                `}
-                key={commonExpense.name}
-                onClick={() => setSelectedExpense(commonExpense)}
-              >
-                <commonExpense.imageComponent />
-              </button>
-            ))}
-            <input placeholder="Enter your own" />
-          </div>
+                &:hover {
+                  transform: rotate(-180deg);
+                }
+              `,
+            ]}
+            onClick={() => setSelectedExpense(null)}
+          >
+            <ResetSvg
+              css={css`
+                fill: #fff;
+                width: 25px;
+              `}
+            />
+          </button>
         )}
-        <CSSTransition in={!!selectedExpense} timeout={2000} classNames="fade">
-          <div
-            css={css`
-              &.fade-enter {
-                max-height: 0;
-                opacity: 0;
-              }
+        <h3
+          css={css`
+            max-width: 250px;
+          `}
+        >
+          {title}
+        </h3>
+      </div>
+      <CSSTransition in={!!selectedExpense} timeout={2000} classNames="fade">
+        <div
+          css={css`
+            height: auto;
+            min-height: 50px;
+            padding: 50px;
 
-              &.fade-enter-active {
-                max-height: 1000px;
-                opacity: 1;
-                transition: opacity 2s, max-height 1s;
-              }
+            &.fade-enter {
+              max-height: 0;
+              opacity: 0;
+            }
 
-              &.fade-exit {
-                max-height: 1000px;
-                opacity: 1;
-              }
+            &.fade-enter-active {
+              max-height: 1000px;
+              opacity: 1;
+              transition: opacity 2s, max-height 1s;
+            }
 
-              &.fade-exit-active {
-                max-height: 0;
-                opacity: 0;
-                transition: opacity 2s, max-height 1s;
-              }
-            `}
-          >
+            &.fade-exit {
+              height: ${expenseDivRef ? expenseDivRef.clientHeight : 0}px;
+              opacity: 0;
+            }
+
+            &.fade-exit-active {
+              height: 0;
+              opacity: 1;
+              transition: opacity 1s, height 1s;
+            }
+          `}
+        >
+          {!selectedExpense && (
+            <div
+              css={css`
+                align-items: center;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+              `}
+            >
+              {commonExpenses.map((commonExpense) => (
+                <button
+                  css={[
+                    svgButtonBase,
+                    css`
+                      transition: transform 0.3s ease;
+                      width: 50px;
+
+                      &:hover {
+                        transform: scale(1.3);
+                      }
+                    `,
+                  ]}
+                  key={commonExpense.name}
+                  onClick={() => setSelectedExpense(commonExpense)}
+                >
+                  <commonExpense.imageComponent />
+                </button>
+              ))}
+              <input placeholder="Enter your own" />
+            </div>
+          )}
+          <div ref={(ref) => (expenseDivRef = ref)}>
             {selectedExpense && <ExpenseDetails css={css``} expense={selectedExpense} />}
           </div>
-        </CSSTransition>
-      </div>
+        </div>
+      </CSSTransition>
     </div>
   );
 };
