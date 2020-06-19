@@ -8,6 +8,7 @@ import { ICommonExpense } from '../static/commonExpenses';
 import { calculateCompoundInterest } from '../utils';
 import { primaryButtonBase } from './styles';
 
+const usdFormatter = Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' });
 const timeframes = [10, 20, 30, 40];
 
 interface IExpenseDetailsProps {
@@ -20,8 +21,10 @@ const ExpenseDetails: React.FunctionComponent<IExpenseDetailsProps> = ({
   const [selectedTimeframe, setSelectedTimeframe] = useState(10);
 
   const yearlyCost = expense.monthlyCost * 12;
-  const totalCost = (yearlyCost * selectedTimeframe).toFixed(2);
-  const totalOpportunityCost = calculateCompoundInterest(yearlyCost, selectedTimeframe).toFixed(2);
+  const totalCost = usdFormatter.format(yearlyCost * selectedTimeframe);
+  const totalOpportunityCost = usdFormatter.format(
+    calculateCompoundInterest(yearlyCost, selectedTimeframe)
+  );
 
   return (
     <div
@@ -43,13 +46,13 @@ const ExpenseDetails: React.FunctionComponent<IExpenseDetailsProps> = ({
             font-size: 1.5em;
           `}
         >
-          ${totalOpportunityCost}
+          {totalOpportunityCost}
           <sup>*</sup>
         </span>{' '}
         instead...
       </div>
       <div>
-        While you only spent ${totalCost}, the opportunity cost is your real enemy. The number above
+        While you only spent {totalCost}, the opportunity cost is your real enemy. The number above
         shows you what could have been if you took the monthly expense and invested it instead.
       </div>
       <ReactMarkdown source={expense.description} />
