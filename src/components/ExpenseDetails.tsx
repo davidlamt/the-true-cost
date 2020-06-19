@@ -78,7 +78,7 @@ const ExpenseDetails: React.FunctionComponent<IExpenseDetailsProps> = ({
       <div>
         <div
           css={css`
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-align: center;
           `}
         >
@@ -93,7 +93,12 @@ const ExpenseDetails: React.FunctionComponent<IExpenseDetailsProps> = ({
         >
           {timeframes.map((otherTimeframe) => (
             <button
-              css={primaryButtonBase}
+              css={[
+                primaryButtonBase,
+                css`
+                  margin-top: 10px;
+                `,
+              ]}
               key={otherTimeframe}
               onClick={() => setSelectedTimeframe(otherTimeframe)}
               disabled={otherTimeframe === selectedTimeframe}
