@@ -8,12 +8,13 @@ import { ReactComponent as ResetSvg } from '../images/reset.svg';
 import { ExpenseDetails } from './';
 
 import commonExpenses, { ICommonExpense } from '../static/commonExpenses';
-import { svgButtonBase } from './styles';
+import { primaryButtonBase, svgButtonBase } from './styles';
 
 let expenseDivRef: HTMLDivElement | null;
 
 const MainCard: React.FunctionComponent = () => {
   const [selectedExpense, setSelectedExpense] = useState<ICommonExpense | null>(null);
+  const [manualExpense, setManualExpense] = useState('');
 
   let title = 'Choose a Monthly Expense';
   if (selectedExpense) {
@@ -85,7 +86,7 @@ const MainCard: React.FunctionComponent = () => {
           css={css`
             height: auto;
             min-height: 50px;
-            padding: 50px;
+            padding: 40px 50px 50px;
 
             &.fade-enter {
               max-height: 0;
@@ -124,6 +125,7 @@ const MainCard: React.FunctionComponent = () => {
                   css={[
                     svgButtonBase,
                     css`
+                      margin-top: 10px;
                       transition: transform 0.3s ease;
                       width: 50px;
 
@@ -138,11 +140,49 @@ const MainCard: React.FunctionComponent = () => {
                   <commonExpense.imageComponent />
                 </button>
               ))}
-              <input placeholder="Enter your own" />
+              <div
+                css={css`
+                  display: flex;
+                  margin-top: 10px;
+                `}
+              >
+                <input
+                  css={css`
+                    background-color: #ebebeb;
+                    border-bottom-left-radius: 5px;
+                    border-top-left-radius: 5px;
+                    border: 1px solid transparent;
+                    outline: none;
+                    padding: 15px;
+                    transition: background-color 0.3s ease;
+
+                    &:focus {
+                      background-color: #fff;
+                      border: 1px solid #ebebeb;
+                    }
+                  `}
+                  placeholder="Enter your own"
+                  type="number"
+                  value={manualExpense}
+                  onChange={(e) => setManualExpense(e.target.value)}
+                />
+                <button
+                  css={[
+                    primaryButtonBase,
+                    css`
+                      border-bottom-left-radius: 0;
+                      border-top-left-radius: 0;
+                    `,
+                  ]}
+                  disabled={!manualExpense}
+                >
+                  Calculate
+                </button>
+              </div>
             </div>
           )}
           <div ref={(ref) => (expenseDivRef = ref)}>
-            {selectedExpense && <ExpenseDetails css={css``} expense={selectedExpense} />}
+            {selectedExpense && <ExpenseDetails expense={selectedExpense} />}
           </div>
         </div>
       </CSSTransition>

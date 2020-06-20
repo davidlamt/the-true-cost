@@ -7,10 +7,9 @@ const primaryButtonBase = css`
   color: #fff;
   cursor: pointer;
   font-size: 1em;
-  height: 50px;
+  min-height: 50px;
   min-width: 100px;
   outline: none;
-  text-transform: uppercase;
   transition: background-color 0.3s ease;
 
   &:hover {
