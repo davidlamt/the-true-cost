@@ -49,9 +49,12 @@ const MainCard: React.FunctionComponent = () => {
               svgButtonBase,
               css`
                 display: flex;
-                left: 10px;
+                height: 25px;
+                left: 20px;
+                padding: 0;
                 position: absolute;
                 transition: transform 0.3s ease;
+                width: 25px;
 
                 &:hover {
                   transform: rotate(-180deg);
@@ -63,7 +66,8 @@ const MainCard: React.FunctionComponent = () => {
             <ResetSvg
               css={css`
                 fill: #fff;
-                width: 25px;
+                height: 100%;
+                width: 100%;
               `}
             />
           </button>

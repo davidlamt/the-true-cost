@@ -58,25 +58,25 @@ const ExpenseDetails: React.FunctionComponent<IExpenseDetailsProps> = ({
       <ReactMarkdown
         css={css`
           a {
+            color: #000;
+            display: inline-block;
+            font-weight: bold;
+            padding: 0 1px;
             position: relative;
             text-decoration: none;
-            display: inline-block;
-            color: black;
-            padding: 0 1px;
-            font-weight: bold;
             transition: color 0.3s ease;
           }
 
           a::after {
+            background: linear-gradient(0.25turn, #364958, #55828b);
+            bottom: 0;
             content: '';
-            position: absolute;
-            z-index: -1;
-            width: 100%;
             height: 10%;
             left: 0;
-            bottom: 0;
-            background: linear-gradient(0.25turn, #364958, #55828b);
+            position: absolute;
             transition: height 0.3s ease;
+            width: 100%;
+            z-index: -1;
           }
 
           a:hover {
