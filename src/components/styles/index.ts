@@ -10,8 +10,6 @@ const primaryButtonBase = css`
   height: 50px;
   min-width: 100px;
   outline: none;
-  padding: 15px;
-  padding: 5px;
   text-transform: uppercase;
   transition: background-color 0.3s ease;
 
