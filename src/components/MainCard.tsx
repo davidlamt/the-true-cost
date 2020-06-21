@@ -161,10 +161,10 @@ const MainCard: React.FunctionComponent = () => {
                       border: 1px solid #ebebeb;
                     }
                   `}
+                  onChange={(e) => e.target.validity.valid && setManualExpense(e.target.value)}
+                  pattern="[0-9]*"
                   placeholder="Enter your own"
-                  type="number"
                   value={manualExpense}
-                  onChange={(e) => setManualExpense(e.target.value)}
                 />
                 <button
                   css={[
