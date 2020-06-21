@@ -75,7 +75,7 @@ const MainCard: React.FunctionComponent = () => {
         )}
         <h3
           css={css`
-            max-width: 250px;
+            max-width: 70%;
           `}
         >
           {title}
@@ -142,7 +142,7 @@ const MainCard: React.FunctionComponent = () => {
                   key={commonExpense.name}
                   onClick={() => setSelectedExpense(commonExpense)}
                 >
-                  <commonExpense.imageComponent />
+                  {commonExpense.imageComponent && <commonExpense.imageComponent />}
                 </button>
               ))}
               <div
@@ -179,6 +179,14 @@ const MainCard: React.FunctionComponent = () => {
                     `,
                   ]}
                   disabled={!manualExpense}
+                  onClick={() =>
+                    setSelectedExpense({
+                      name: 'Your guilty pleasure',
+                      monthlyCost: +manualExpense,
+                      description:
+                        'Is this expense really worth it? There is no right answer - not everything has to be fiscal-centric. Just make sure you understand the _true_ cost when weighing your options!',
+                    })
+                  }
                 >
                   Calculate
                 </button>

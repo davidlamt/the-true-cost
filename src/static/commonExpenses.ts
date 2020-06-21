@@ -2,7 +2,7 @@ import { ReactComponent as CoffeeSvg } from '../images/coffee.svg';
 
 export interface ICommonExpense {
   name: string;
-  imageComponent: React.FunctionComponent;
+  imageComponent?: React.FunctionComponent;
   monthlyCost: number;
   description: string;
 }

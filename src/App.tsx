@@ -14,6 +14,7 @@ const App: React.FunctionComponent = () => {
         max-width: 60em;
         padding: 50px 0;
         text-align: center;
+        word-break: break-word;
       `}
     >
       <Header />
