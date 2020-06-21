@@ -11,6 +11,7 @@ import commonExpenses, { ICommonExpense } from '../static/commonExpenses';
 import { primaryButtonBase, svgButtonBase } from './styles';
 
 let expenseDivRef: HTMLDivElement | null;
+let originalCardContentsHeight: number | undefined;
 
 const MainCard: React.FunctionComponent = () => {
   const [selectedExpense, setSelectedExpense] = useState<ICommonExpense | null>(null);
@@ -39,7 +40,6 @@ const MainCard: React.FunctionComponent = () => {
           display: flex;
           justify-content: center;
           margin: 0;
-          min-height: 50px;
           padding: 0;
           position: relative;
         `}
@@ -85,8 +85,8 @@ const MainCard: React.FunctionComponent = () => {
         <div
           css={css`
             height: auto;
-            min-height: 50px;
-            padding: 40px 50px 50px;
+            min-height: ${originalCardContentsHeight || 50}px;
+            padding: 50px;
 
             &.fade-enter {
               max-height: 0;
@@ -110,6 +110,12 @@ const MainCard: React.FunctionComponent = () => {
               transition: opacity 1s ease, height 1s ease;
             }
           `}
+          ref={(ref) => {
+            if (ref && ref.clientHeight && !originalCardContentsHeight) {
+              // Full Height minus padding
+              originalCardContentsHeight = ref.clientHeight - 100;
+            }
+          }}
         >
           {!selectedExpense && (
             <div
@@ -125,7 +131,6 @@ const MainCard: React.FunctionComponent = () => {
                   css={[
                     svgButtonBase,
                     css`
-                      margin-top: 10px;
                       transition: transform 0.3s ease;
                       width: 50px;
 
@@ -143,7 +148,6 @@ const MainCard: React.FunctionComponent = () => {
               <div
                 css={css`
                   display: flex;
-                  margin-top: 10px;
                 `}
               >
                 <input
