@@ -118,36 +118,41 @@ const MainCard: React.FunctionComponent = () => {
           }}
         >
           {!selectedExpense && (
-            <div
-              css={css`
-                align-items: center;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-evenly;
-              `}
-            >
-              {commonExpenses.map((commonExpense) => (
-                <button
-                  css={[
-                    svgButtonBase,
-                    css`
-                      transition: transform 0.3s ease;
-                      width: 50px;
+            <div>
+              <div
+                css={css`
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: space-evenly;
+                `}
+              >
+                {commonExpenses.map((commonExpense) => (
+                  <button
+                    css={[
+                      svgButtonBase,
+                      css`
+                        transition: transform 0.3s ease;
+                        width: ${commonExpense.imageWidth || 50}px;
+                        margin-bottom: 10px;
 
-                      &:hover {
-                        transform: scale(1.3);
-                      }
-                    `,
-                  ]}
-                  key={commonExpense.name}
-                  onClick={() => setSelectedExpense(commonExpense)}
-                >
-                  {commonExpense.imageComponent && <commonExpense.imageComponent />}
-                </button>
-              ))}
+                        &:hover {
+                          transform: scale(1.3);
+                        }
+                      `,
+                    ]}
+                    key={commonExpense.name}
+                    onClick={() => setSelectedExpense(commonExpense)}
+                  >
+                    {commonExpense.imageComponent && <commonExpense.imageComponent />}
+                  </button>
+                ))}
+              </div>
               <div
                 css={css`
                   display: flex;
+                  justify-content: center;
+                  margin-top: 30px;
                 `}
               >
                 <input
