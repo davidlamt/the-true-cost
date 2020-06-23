@@ -12,6 +12,7 @@ import { primaryButtonBase, svgButtonBase } from './styles';
 
 let expenseDivRef: HTMLDivElement | null;
 let originalCardContentsHeight: number | undefined;
+let originalCardHeaderHeight: number | undefined;
 
 const MainCard: React.FunctionComponent = () => {
   const [selectedExpense, setSelectedExpense] = useState<ICommonExpense | null>(null);
@@ -42,7 +43,13 @@ const MainCard: React.FunctionComponent = () => {
           margin: 0;
           padding: 0;
           position: relative;
+          min-height: ${originalCardHeaderHeight || 50}px;
         `}
+        ref={(ref) => {
+          if (ref && ref.clientHeight && !originalCardHeaderHeight) {
+            originalCardHeaderHeight = ref.clientHeight;
+          }
+        }}
       >
         {selectedExpense && (
           <button
@@ -96,7 +103,7 @@ const MainCard: React.FunctionComponent = () => {
             &.fade-enter-active {
               max-height: 5000px;
               opacity: 1;
-              transition: opacity 2s ease, max-height 1s ease;
+              transition: opacity 2s ease, max-height 2s ease;
             }
 
             &.fade-exit {
