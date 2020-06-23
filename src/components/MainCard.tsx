@@ -94,7 +94,7 @@ const MainCard: React.FunctionComponent = () => {
             }
 
             &.fade-enter-active {
-              max-height: 1000px;
+              max-height: 5000px;
               opacity: 1;
               transition: opacity 2s ease, max-height 1s ease;
             }
