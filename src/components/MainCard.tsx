@@ -41,9 +41,9 @@ const MainCard: React.FunctionComponent = () => {
           display: flex;
           justify-content: center;
           margin: 0;
+          min-height: ${originalCardHeaderHeight || 50}px;
           padding: 0;
           position: relative;
-          min-height: ${originalCardHeaderHeight || 50}px;
         `}
         ref={(ref) => {
           if (ref && ref.clientHeight && !originalCardHeaderHeight) {

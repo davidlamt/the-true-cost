@@ -129,7 +129,7 @@ const ExpenseDetails: React.FunctionComponent<IExpenseDetailsProps> = ({
               css={[
                 primaryButtonBase,
                 css`
-                  margin-top: 10px;
+                  margin: 10px 5px 0 5px;
                 `,
               ]}
               key={otherTimeframe}
