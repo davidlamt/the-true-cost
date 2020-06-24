@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/the-true-cost/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/the-true-cost/static/js/main.3a3884e7.chunk.js",
+    "main.js.map": "/the-true-cost/static/js/main.3a3884e7.chunk.js.map",
+    "runtime-main.js": "/the-true-cost/static/js/runtime-main.5551671e.js",
+    "runtime-main.js.map": "/the-true-cost/static/js/runtime-main.5551671e.js.map",
+    "static/js/2.13113bd7.chunk.js": "/the-true-cost/static/js/2.13113bd7.chunk.js",
+    "static/js/2.13113bd7.chunk.js.map": "/the-true-cost/static/js/2.13113bd7.chunk.js.map",
+    "index.html": "/the-true-cost/index.html",
+    "precache-manifest.359bcfc54ea3b1df12a2b8efd0ac30ad.js": "/the-true-cost/precache-manifest.359bcfc54ea3b1df12a2b8efd0ac30ad.js",
+    "service-worker.js": "/the-true-cost/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/the-true-cost/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.13113bd7.chunk.js.LICENSE.txt": "/the-true-cost/static/js/2.13113bd7.chunk.js.LICENSE.txt",
+    "static/media/antenna-dish.530abe7f.svg": "/the-true-cost/static/media/antenna-dish.530abe7f.svg",
+    "static/media/arm-dumbbell.cf5153e4.svg": "/the-true-cost/static/media/arm-dumbbell.cf5153e4.svg",
+    "static/media/car.c6145839.svg": "/the-true-cost/static/media/car.c6145839.svg",
+    "static/media/coffee.702cace2.svg": "/the-true-cost/static/media/coffee.702cace2.svg",
+    "static/media/phone.dc1970f6.svg": "/the-true-cost/static/media/phone.dc1970f6.svg",
+    "static/media/reset.93476a7d.svg": "/the-true-cost/static/media/reset.93476a7d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5551671e.js",
+    "static/js/2.13113bd7.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.3a3884e7.chunk.js"
+  ]
+}
